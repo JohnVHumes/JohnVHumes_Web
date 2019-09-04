@@ -1,0 +1,123 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 3, 2019, 7:28:45 PM
+    Author     : Euthyphro
+*/
+
+html,body{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+body{
+    background-color: rgba(27, 66, 104, 1);
+}
+
+#title,#nav{
+    box-sizing: border-box;
+    position:fixed;
+    top:0px;    
+    vertical-align: middle;
+    padding: 10px;
+    height: 90px; 
+    width: 100%;
+}
+#title{
+   
+
+    left:0px;
+    font-size: 35px;
+    padding-top: 5px;
+    padding-left:10px;
+    color: white;
+    font-weight: bold;
+    z-index: 2;
+    background-color: rgba(0,0,0,0);;
+    max-width: 300px;
+
+}
+
+#nav{
+    display:block;
+    right:0px;
+
+    font-size: 25px;
+    color: rgba(255,255,255,0.8);
+    background-color: black;
+    z-index: 1;
+    text-align: right;
+    padding-right:10px;
+    min-width: 800px;
+        
+}
+
+#nav a{
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+}
+
+#nav a:visited {
+  color: rgba(255,255,255,0.4);
+}
+
+#nav a:hover {
+  color: white;
+}
+
+
+
+
+
+#content{
+
+    font-size: 20px;
+    margin: 10px;
+    margin-top: 120px;
+    margin-bottom: 40px;
+    padding:10px;
+    padding-top:1px;
+    padding-bottom: 4px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+#footer{
+    position:fixed;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background-color: black;
+    font-size: 25px;
+    text-align: center;
+    color: graytext;
+}
+#footer a {
+    color: graytext;
+    text-decoration: none;
+
+}
+
+.width33{
+
+}
+
+.width66{
+
+}
+
+@media screen and (min-width: 600px){
+    #content{
+        margin:80px;
+        margin-top:120px;
+        padding:20px;
+    }
+
+
+}
