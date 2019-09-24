@@ -22,24 +22,25 @@ body{
 
 #titlenav{
     width: 100%;
-    height: 90px;
+    height: 60px;
     position: fixed;
     top: 0px;
-    background-color: black;
+    background-color: whitesmoke;
 }
 #title{
 
     float: left;
-    font-size: 35px;
-    padding-top: 5px;
-    padding-left:10px;
-    color: white;
+    font-size: 27px;
+    padding-left:1ex;
+    color: darkblue;
     font-weight: bold;
     z-index: 1;
     min-width: 300px;
     font-family: Arial, Helvetica, sans-serif;
 
 }
+
+
 
 #nav{
     display:block;
@@ -51,20 +52,27 @@ body{
     text-align: right;
     padding-right:10px;
     min-width: 800px;
-    
+
     font-family: Arial, Helvetica, sans-serif;
 
 }
+.centerbox{
+    background-color: gray;
+    margin-top: 1ex;
+    padding-top:2px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+.centerbox a img{
+    display: inline-block;
+    margin: 1ex 2ex;
 
-
-.dropdown{
-    
 }
 
-.dropHeader{
-    background-color: red;
-    z-index: 3;
-}
+
+
 
 #nav a{
     color: rgba(255,255,255,0.8);
@@ -87,6 +95,8 @@ body{
 
 .deskNavElem{
     display: none;
+    margin-top: 20px;
+    text-align: center;
 }
 
 
@@ -98,15 +108,21 @@ body{
 
     font-size: 20px;
     margin: 10px;
-    margin-top: 120px;
-    margin-bottom: 40px;
+    margin-top: 80px;
+    margin-bottom: 60px;
     padding:10px;
     padding-top:1px;
-    padding-bottom: 4px;
+    padding-bottom: 2ex;
     border-radius: 5px;
     background-color: white;
 }
 
+
+#attribution{
+    padding-bottom: 5ex;
+
+
+}
 #footer{
     position:fixed;
     bottom: 0px;
@@ -133,9 +149,8 @@ body{
 
     .deskNavElem{
         display: inline;
-        padding-top: 30px
     }
-    
+
 
 
 

@@ -1,0 +1,11 @@
+SMAP
+listCharacterAP_jsp.java
+JSP
+*S JSP
+*F
++ 0 listCharacterAP.jsp
+webAPIs/listCharacterAP.jsp
+*L
+1,12:51
+14,17:64
+*E

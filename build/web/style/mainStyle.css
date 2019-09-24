@@ -1,0 +1,157 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 3, 2019, 7:28:45 PM
+    Author     : Euthyphro
+*/
+
+html,body{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+body{
+    background-color: rgba(27, 66, 104, 1);
+}
+
+#titlenav{
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0px;
+    background-color: whitesmoke;
+}
+#title{
+
+    float: left;
+    font-size: 27px;
+    padding-left:1ex;
+    color: darkblue;
+    font-weight: bold;
+    z-index: 1;
+    min-width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+#nav{
+    display:block;
+    right:0px;
+    position: fixed;
+    font-size: 20px;
+    color: rgba(255,255,255,0.8);
+    z-index: 2;
+    text-align: right;
+    padding-right:10px;
+    min-width: 800px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.centerbox{
+    background-color: gray;
+    margin-top: 1ex;
+    padding-top:2px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+.centerbox a img{
+    display: inline-block;
+    margin: 1ex 2ex;
+
+}
+
+
+
+
+#nav a{
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+}
+
+#nav a:visited {
+    color: rgba(255,255,255,0.4);
+}
+
+#nav a:hover {
+    color: white;
+}
+
+.navElem{
+    float:right;
+    display: inline;
+    padding-left: 1ex;
+}
+
+.deskNavElem{
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+
+
+
+
+#content{
+
+    font-size: 20px;
+    margin: 10px;
+    margin-top: 80px;
+    margin-bottom: 60px;
+    padding:10px;
+    padding-top:1px;
+    padding-bottom: 2ex;
+    border-radius: 5px;
+    background-color: white;
+}
+
+
+#attribution{
+    padding-bottom: 5ex;
+
+
+}
+#footer{
+    position:fixed;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background-color: black;
+    font-size: 25px;
+    text-align: center;
+    color: graytext;
+}
+#footer a {
+    color: graytext;
+    text-decoration: none;
+
+}
+
+
+@media screen and (min-width: 830px){
+    #content{
+        margin:80px;
+        margin-top:120px;
+        padding:20px;
+    }
+
+    .deskNavElem{
+        display: inline;
+    }
+
+
+
+
+}

@@ -1,0 +1,50 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 10, 2019, 9:14:06 PM
+    Author     : Euthyphro
+*/
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding-right: 1ex;
+    padding-top: 5px;
+}
+
+.dropdown img{
+    
+    height: 50px;
+}
+
+.dropHeader{
+    z-index: 3;
+}
+
+.dropContent{
+    background-color:darkblue;
+    width: 16ex;
+
+    right:0px;
+    position: absolute;
+    font-size: 14px;
+    z-index: 3;
+    text-justify: auto;
+
+    padding: 8px;
+    line-height: 1.7em;
+    border-radius: 8px;
+    letter-spacing: 1px;
+
+    right: -500px;  /* places the element off screen to the right */
+    visibility: hidden; /* initially you cannot see the dropContent elements */
+   
+
+    /* animate the change of the right property when clicked (zooms in from right but slowly)*/
+    transition: right 0.5s ease 0s;
+    
+}
