@@ -12,7 +12,8 @@ and open the template in the editor.
 
         <link href="style/mainStyle.css" rel="stylesheet" type="text/css" />
         <link href="style/dropdownStyle.css" rel="stylesheet" type="text/css"/>
-
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css"/>
+        <link href="style/lightBox.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -31,77 +32,99 @@ and open the template in the editor.
                     <a href="#/blog"><img title="Blog" src="icons/scroll.png" alt="Blog" ></a>
                 </div>
                 <div class="dropdown">
-                    <img class="dropHeader" title="Houses" onclick="myDropdown.toggle(this)" src="icons/flag.png" alt="Houses" >
-                    <div class="dropContent" id="accountDropDown">
-                        <a href="#/blackeagles">Black Eagles</a> <hr/>
-                        <a href="#/bluelions">Blue Lions</a> <hr/>
-                        <a href="#/goldendeer">Golden Deer</a> <hr/>
-                        <a href="#/churchofseros">Church of Seros</a>
+                    <img class="dropHeader" title="Search" onclick="myDropdown.toggle(this)" src="icons/torches.png" alt="Search" >
+                    <div class="dropContent" id="searchDropDown">
+                        <a href="#/users">Users</a> <hr/>
+                        <a href="#/characters">Characters</a> <hr/>
+                        <a href="#/factions">Factions</a> <hr/>
                     </div> 
+                </div>
+                <div class="dropdown">
+                    <img class="dropHeader" title="Account" onclick="myDropdown.toggle(this)" src="icons/spears.png" alt="Account" >
+                    <div class="dropContent" id="accountDropDown">
+                    <a href="#/logon">Login</a> <hr/>
+                    <a href="#/profile">My Account</a> <hr/>
+                    <a href="#/logout">Log...OUT!</a> <hr/>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <img class="dropHeader" title="Tutorial" onclick="myDropdown.toggle(this)" src="icons/spears.png" alt="Tutorial" >
+                    <div class="dropContent" id="tutorialDropDown">
+                    <a href="misc/proposalJVH.pdf">Proposal PDF</a> <hr/>
+                    <a href="poc.html">Proof of Concept</a> <hr/>
+                    </div>
                 </div>
             </div>
         </div>
 
 
 
-    <div id="content">
-    </div> 
+        <div id="content">
+        </div> 
 
 
 
 
 
-    <div id="attribution">Nav Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-            Freepik</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a>
-    </div>
+        <div id="attribution">Nav Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+                Freepik</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a>
+        </div>
 
-    <div id="footer">
+        <div id="footer">
 
-        Contact:<a href="mailto:JohnVHumes@temple.edu"> JohnVHumes@temple.edu </a>        
-    </div>
-    <script src="js/dropdownFw.js"></script>
-    <script src="js/routeFw.js"></script>
-    <script src="js/components/home.js"></script> 
-    <script src="js/components/blog.js"></script>
-    <script src="js/components/blackeagles.js"></script>
-    <script src="js/components/goldendeer.js"></script> 
-    <script src="js/components/bluelions.js"></script> 
-    <script src="js/components/churchofseros.js"></script> 
+            Contact:<a href="mailto:JohnVHumes@temple.edu"> JohnVHumes@temple.edu </a>        
+        </div>
+        <script src="js/dropdownFw.js"></script>
+        <script src="js/routeFw.js"></script>
 
-    <script>
+        <script src="js/ajax.js"></script>
+        <script src="js/makeTable.js"></script>
+        <script src="js/components/home.js"></script> 
+        <script src="js/components/blog.js"></script>
+        <script src="js/components/users.js"></script>
+        <script src="js/components/characters.js"></script> 
+        <script src="js/components/factions.js"></script> 
+        <script src="js/components/logon.js"></script> 
 
-                    "use strict";
-                    var routes = [];
+        <script>
 
-                    routes['/'] = home;  // home is a function stored in js/components/home.js
-                    routes['/home'] = home;
-                    routes['/blog'] = blog;
-                    routes['/blackeagles'] = blackeagles;
-                    routes['/goldendeer'] = goldendeer;
-                    routes['/bluelions'] = bluelions;
-                    routes['/churchofseros'] = churchofseros;
-                    
+                        "use strict";
+                        var routes = [];
+
+                        routes['/'] = home;  // home is a function stored in js/components/home.js
+                        routes['/home'] = home;
+                        routes['/blog'] = blog;
+                        routes['/users'] = users.list;
+                        routes['/factions'] = factions;
+                        routes['/characters'] = characters.list;
+                        routes['/logon'] = logon.UI;
+                        routes['/profile'] = logon.getProfile;
+                        routes['/logout'] = logon.logoff;
+                        
 
 
-                    // routeFw returns a routing object that has private and public 
-                    // data members and methods. 
-                    // As input parameter, it takes an object with properties you can set 
-                    // or just accept whatever defaults are set by the framework.
-                    var myRoutes = routeFw({
-                        routeArray: routes,
-                        startingPath: '/home',
-                        contentId: "content"
-                    });
 
-                    // print the routes (check console.log)
-                    myRoutes.printRoutes();
+                        // routeFw returns a routing object that has private and public 
+                        // data members and methods. 
+                        // As input parameter, it takes an object with properties you can set 
+                        // or just accept whatever defaults are set by the framework.
+                        var myRoutes = routeFw({
+                            routeArray: routes,
+                            startingPath: '/home',
+                            contentId: "content"
+                        });
 
-                    var myDropdown = dropDownFw({
-                        dropContentStyle: "dropContent",
-                        hiddenRight: "-250px"
-                    });
+                        // print the routes (check console.log)
+                        myRoutes.printRoutes();
 
-    </script>
+                        var myDropdown = dropDownFw({
+                            dropContentStyle: "dropContent",
+                            hiddenRight: "-250px"
+                        });
 
-</body>
+                        var tableBuilder = makeTable("icons/sortUpDown16.png");
+
+        </script>
+
+    </body>
 </html>

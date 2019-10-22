@@ -19,6 +19,7 @@ public class StringData {
     public String charLevel = "";
     public String charInteraction = "";
     public String factionID = "";
+    public String image="";
     public String factionName = "";   // Foreign Key
     
     
@@ -35,6 +36,7 @@ public class StringData {
             this.charLevel = FormatUtils.formatInteger(results.getObject("character_level"));
             this.charInteraction = FormatUtils.formatString(results.getObject("character_interaction"));
             this.factionID = FormatUtils.formatInteger(results.getObject("character_table.faction_id"));
+            this.image=FormatUtils.formatString(results.getObject("img"));
             this.factionName = FormatUtils.formatString(results.getObject("faction_name"));
         } catch (Exception e) {
             this.errorMsg = "Exception thrown in model.characterTable.CharacterData (the constructor that takes a ResultSet): " + e.getMessage();
@@ -52,6 +54,7 @@ public class StringData {
                 + ", Level: " + this.charLevel
                 + ", Support table: " + this.charInteraction
                 + ", Faction ID:" + this.factionID
+                + ", Image URL:" + this.image
                 + ", Faction Name: " + this.factionName;
     }
 

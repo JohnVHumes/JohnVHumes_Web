@@ -17,7 +17,7 @@ public class CharacterView {
         StringDataList sdl = new StringDataList();
         try {
             String sql = "SELECT character_id, character_name, character_level, character_interaction, "
-                    + "character_table.faction_id, faction_name "
+                    + "img, character_table.faction_id, faction_name "
                     + "FROM character_table, faction_table where character_table.faction_id = faction_table.faction_id "
                     + "ORDER BY character_name ";  // you always want to order by something, not just random order.
             PreparedStatement stmt = dbc.getConn().prepareStatement(sql);

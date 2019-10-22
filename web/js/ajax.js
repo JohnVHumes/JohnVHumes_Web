@@ -1,41 +1,40 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-function ajax(url, successfulCallBack, errorID) {
-
-    var httpReq;
-
-    if (window.ActiveXObject) {
-        httpReq = new ActiveXObject("Microsoft.XMLHTTP");
-    } else if (window.XMLHTTPRequest) {
-        httpReq = new XMLHTTPRequest();
-    } else {
-        alert('ALART: NETSCAPE NAVIGATOR NOT SUPPORTED');
+function ajax (params){
+    
+    // expecting params properties url, successFn, and errorId
+    if (!params || !params.url || !params.successFn || !params.errorId) {
+        alert ("function ajax requires an input parameter object with properties: url, successFn, and errorId");
+        return;
     }
 
-    console.log("preparing to get" + url + "content");
+    var httpReq;
+    if (window.XMLHttpRequest) {
+        httpReq = new XMLHttpRequest(); //For Firefox, Safari, Opera
+    } else if (window.ActiveXObject) {
+        httpReq = new ActiveXObject("Microsoft.XMLHTTP"); //For IE 5+
+    } else {
+        alert('ajax not supported');
+    }
 
-    httpReq.open("GET", url); // identitfy the page I want to get
+    console.log("ready to get content " + params.url);
+    httpReq.open("GET", params.url); // specify which page you want to get
 
-    //this all can happen while other things are loading to augment site
-    //responsiveness
+    // Ajax calls are asyncrhonous (non-blocking). Specify the code that you 
+    // want to run when the response (to the http request) is available. 
+    httpReq.onreadystatechange = function () {
 
-    httpReq.onreadystatechange = responseProcessing;
-
-    function responseProcessing() {
         // readyState == 4 means that the http request is complete
         if (httpReq.readyState === 4) {
             if (httpReq.status === 200) {
-                successfulCallBack(httpReq);
+                var obj = JSON.parse(httpReq.responseText);
+                params.successFn(obj);  // like the jQuery ajax call, pass back JSON already parsed to JS objecg
             } else {
                 // First use of property creates new (custom) property
-                document.getElementById(errorID).innerHTML = "Error (" + httpReq.status + " " + httpReq.statusText +
-                        ") while attempting to read '" + url + "'";
+                document.getElementById(params.errorId).innerHTML = "Error (" + httpReq.status + " " + httpReq.statusText +
+                        ") while attempting to read '" + params.url + "'";
             }
         }
-    }
-}//and scene
+    }; // end of anonymous function
+
+    httpReq.send(null); // initiate ajax call
+
+} // end function ajax2

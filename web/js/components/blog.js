@@ -101,6 +101,72 @@ var content = `
         Finally, before I forget, click <a href="misc/SQL_errors.docx">here</a> to see the intentionally caused and solved SQL bugs.
         <br>
         I fully support this part of the exercise, I feel it made the rest of the project a whole lot easier, and helped me learn a lot.
+    </p>
+    
+    
+    HW 4 Display Data
+    <p>
+    
+    It's nearly 3am while writing this, so I'll keep this entry brief. This week
+    I retrofitted last week's API into being displayed as a nice, neat table, using an ajax call.
+    
+    <ul>
+    <b> Difficulties</b>
+    
+        <li>
+            I spent about 3 hours trying to track down the hole where a JSON parsing call should be
+        </li>
+        <li>
+            The lack of this call caused many functions to flag as invalid, and I spent most of that 3 hours analyzing the
+            symptoms rather than the disease, as it were
+        </li>
+        <li>
+            As this codebase grows, it's a bit of a hunt to find all the places where modifications need to allow new sample code
+            to interface with other databases
+        </li>
+        <li>
+            It took a bit of time to figure out how function scoping works in .js files, for the routing
+        </li>
+    <br>
+    <b> Not-So-Difficulties</b>
+    
+        <li>
+            Updating the database tables to include images was a breeze, even though it felt like there should've been a better way to do it
+        </li>
+
+    </ul>
+    
+    </p>
+    HW5 Tutorial Proposal
+    
+    <ul>
+                    <li><a href="misc/proposalJVH.pdf">Proposal PDF</a> <hr/></li>
+                    <li><a href="poc.html">Proof of Concept</a> <hr/> <hr/></li>
+    
+    <p>
+    
+    <ul>
+    <b> Difficulties</b>
+    
+        <li>
+            I realized too late in this assignment that I probably should have just done the slideshow homework, I don't feel I've
+            yet sufficiently developed my competency to deliver on this assignment
+        </li>
+        <li>
+            I felt the selection criteria for topics was vague, and attempting to settle on an sufficient sample
+            ate through most of the time and energy I had earmarked for this homework
+        </li>
+
+    <br>
+    <b> Not-So-Difficulties</b>
+    
+        <li>
+            since poc.html was specified, I didn't have to wrestle with figuring out how to add a page with a unique style sheet and its
+            own scripting into the routing table
+        </li>
+
+    </ul>
+    
        `;
         document.getElementById(id).innerHTML = content;
         }

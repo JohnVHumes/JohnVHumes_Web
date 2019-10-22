@@ -1,0 +1,11 @@
+SMAP
+getCharacterByIdAPI_jsp.java
+JSP
+*S JSP
+*F
++ 0 getCharacterByIdAPI.jsp
+webAPIs/getCharacterByIdAPI.jsp
+*L
+1,8:48
+11,22:58
+*E

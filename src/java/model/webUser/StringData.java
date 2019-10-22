@@ -20,7 +20,8 @@ public class StringData {
     public String userPassword = "";
     public String birthday = "";
     public String membershipFee = "";
-    public String userRoleId = "";   // Foreign Key
+    public String userRoleId = "";// Foreign Key
+    public String image="";
     public String userRoleType = ""; // getting it from joined user_role table.
 
     public String errorMsg = "";
@@ -38,6 +39,7 @@ public class StringData {
             this.birthday = FormatUtils.formatDate(results.getObject("birthday"));
             this.membershipFee = FormatUtils.formatDollar(results.getObject("membership_fee"));
             this.userRoleId = FormatUtils.formatInteger(results.getObject("web_user.user_role_id"));
+            this.image= FormatUtils.formatString(results.getObject("image"));
             this.userRoleType = FormatUtils.formatString(results.getObject("user_role_type"));
         } catch (Exception e) {
             this.errorMsg = "Exception thrown in model.webUser.StringData (the constructor that takes a ResultSet): " + e.getMessage();
@@ -57,6 +59,7 @@ public class StringData {
                 + ", Birthday: " + this.birthday
                 + ", Membership Fee: " + this.membershipFee
                 + ", User Role Id: " + this.userRoleId
+                + ", Image URL: " + this.image
                 + ", User Role Type: " + this.userRoleType;
     }
 }
