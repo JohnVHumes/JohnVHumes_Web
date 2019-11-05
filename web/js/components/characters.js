@@ -41,11 +41,15 @@ characters.list = function (id) {
         var charList = [];
         for (var i = 0; i < obj.CharacterList.length; i++) {
             charList[i] = {}; // add new empty object to array
-
+            
+            charList[i].charID = obj.CharacterList[i].charID;
             charList[i].charName = obj.CharacterList[i].charName;
             charList[i].image = obj.CharacterList[i].image;
             charList[i].charLevel = obj.CharacterList[i].charLevel;
             charList[i].factionName = obj.CharacterList[i].factionName;
+            
+            charList[i].delete = "<img src='" + CRUD_icons.delete + "' alt='delete icon' onclick='characters.delete(" +
+                    charList[i].charID + " ,this)'  />";
         }
 
         // add click sortable HTML table to the content area
@@ -70,8 +74,31 @@ characters.list = function (id) {
         });
     } // end of function success
 
-}; // end of function users.list
+}; // end of function characters.list
 
+
+characters.delete = function (charID, icon) {
+    if (confirm("Do you really want to delete character " + charID + "? ")) {
+        console.log("icon that was passed into JS function is printed on next line");
+        console.log(icon);
+        // HERE YOU HAVE TO CALL THE DELETE API and the success function should run the 
+        // following (delete the row that was clicked from the User Interface).
+        ajax({
+            url: "webAPIs/deleteCharacterAPI.jsp?deleteId=" + charID,
+            successFn: success,
+            errorId: charID
+        });
+    }
+    function success(obj) {
+
+// icon's parent is cell whose parent is row 
+        var dataRow = icon.parentNode.parentNode;
+        var rowIndex = dataRow.rowIndex - 1; // adjust for oolumn header row?
+        var dataTable = dataRow.parentNode;
+        dataTable.deleteRow(rowIndex);
+    }
+
+};
 
 // for future implementation...
 characters.find = function (targetId) {

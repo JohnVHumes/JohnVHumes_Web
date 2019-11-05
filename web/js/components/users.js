@@ -1,7 +1,7 @@
 var users = {};
 
 users.list = function(id) {
-
+    var userList = [];
     // clear out whatever may be currently in the content area
     var contentDOM = document.getElementById(id);
     contentDOM.innerHTML = "";
@@ -43,7 +43,6 @@ users.list = function(id) {
         contentDOM.appendChild(tableDiv);
 
         // tweak obj.webUserList to include only the properties you want - combine, delete, etc. 
-        var userList = [];
         for (var i = 0; i < obj.webUserList.length; i++) {
             userList[i] = {}; // add new empty object to array
             userList[i].userCredentials = obj.webUserList[i].userEmail + "<br/> PW (to test Logon): " +
@@ -54,6 +53,9 @@ users.list = function(id) {
             userList[i].role = obj.webUserList[i].userRoleId + "&nbsp;" +
                     obj.webUserList[i].userRoleType;
             userList[i].userId = obj.webUserList[i].webUserId;
+            
+            userList[i].delete = "<img src='" + CRUD_icons.delete + "' alt='delete icon' onclick='users.delete(" +
+                    userList[i].userId + " ,this)'  />";
 
         }
 
@@ -82,6 +84,28 @@ users.list = function(id) {
 }; // end of function users.list
 
 
+users.delete = function (userId, icon) {
+    if (confirm("Do you really want to delete user " + userId + "? ")) {
+        console.log("icon that was passed into JS function is printed on next line");
+        console.log(icon);
+        // HERE YOU HAVE TO CALL THE DELETE API and the success function should run the 
+        // following (delete the row that was clicked from the User Interface).
+        ajax({
+            url: "webAPIs/deleteUserAPI.jsp?deleteId=" + userId,
+            successFn: success,
+            errorId: userId
+        });
+    }
+    function success(obj) {
+
+// icon's parent is cell whose parent is row 
+        var dataRow = icon.parentNode.parentNode;
+        var rowIndex = dataRow.rowIndex - 1; // adjust for oolumn header row?
+        var dataTable = dataRow.parentNode;
+        dataTable.deleteRow(rowIndex);
+    }
+
+};
 // for future implementation...
 users.find = function(targetId) {
     

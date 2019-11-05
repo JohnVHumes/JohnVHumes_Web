@@ -22,7 +22,7 @@ logon.findUser = function (emailId, pwId, msgId) {
     emailId = escape(document.getElementById(emailId).value);
     pwId = escape(document.getElementById(pwId).value);
     ajax({
-        url: "webAPIs/logonAPI.jsp?UserEmail="+emailId+"&Password="+pwId,
+        url: "webAPIs/logonAPI.jsp?UserEmail=" + emailId + "&Password=" + pwId,
         successFn: callBack,
         errorId: msgId
     });
@@ -41,13 +41,13 @@ logon.findUser = function (emailId, pwId, msgId) {
             msgId.innerHTML += "Database Error Encountered: " + obj.dbError;
             return;
         } else if (obj.webUserList.length === 0) {
-            msgId.innerHTML = "No Web User with those credentials was found in the Database.:"+emailId+pwId;
+            msgId.innerHTML = "No Web User with those credentials was found in the Database.:" + emailId + pwId;
         } else {
-            var msg = "Found Web User " + obj.webUserList[0].webUserId;
+            var msg = "&nbsp; Found Web User " + obj.webUserList[0].webUserId;
             msg += "<br/> &nbsp; Birthday: " + obj.webUserList[0].birthday;
             msg += "<br/> &nbsp; MembershipFee: " + obj.webUserList[0].membershipFee;
             msg += "<br/> &nbsp; User Role: " + obj.webUserList[0].userRoleId + " " + obj.webUserList[0].userRoleType;
-            msg += "<br/> <img src ='" + obj.webUserList[0].image + ">";
+            msg += "<br/> <img src ='" + obj.webUserList[0].image + "' width='200'>";
             msgId.innerHTML = msg;
         }
 
@@ -57,12 +57,48 @@ logon.findUser = function (emailId, pwId, msgId) {
 
 };
 
-logon.getProfile = function(id){
-    
+logon.getProfile = function (id) {
+
     var contentDOM = document.getElementById(id);
-    
-    
-    
+
+    contentDOM.innerHTML = "";
+
+    ajax({
+        url: "webAPIs/getProfileAPI.jsp",
+        successFn: callBack,
+        errorId: id
+    });
+
+    function callBack(obj) {
+        if (!obj) {
+
+            contentDOM.innerHTML = "You are not logged in. &#128534";
+
+        } else {
+
+            var result = "User ID: " + obj.webUserId;
+            if (obj.birthday) {
+                result += "<br/> Birthday: " + obj.birthday;
+            }
+            if (obj.membershipFee) {
+                result += "<br/> Your Membership Price: " + obj.membershipFee;
+            }
+            if (obj.userRoleType) {
+                result += "<br/> Your Role: " + obj.userRoleType;
+            }
+            if (obj.image) {
+
+                result += "<br/> Your beautiful face<br/> ";
+                result += "<img src ='" + obj.image + "' width='200'>";
+
+            }
+
+            contentDOM.innerHTML = result;
+        }
+    }
+
+
+
 };
 
 logon.logoff = function (id) {
@@ -73,13 +109,14 @@ logon.logoff = function (id) {
         successFn: callBack,
         errorId: id
     });
-    
-    function callBack(){
-        
-        document.getElementById(id).innerHTML = "Yay you logged out!";
-        
-        
-        
+
+    function callBack() {
+
+
+
+
     }
+
+    contentDOM.innerHTML = "Yay you logged out!";
 
 };

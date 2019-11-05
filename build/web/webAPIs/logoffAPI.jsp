@@ -6,6 +6,4 @@
     if(!(session.getAttribute("UserLogin")==null)){
     session.invalidate();
     }
-    Gson gson = new Gson();
-    out.print(gson.toJson(session.getAttribute("UserLogin")));
 %>

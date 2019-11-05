@@ -40,18 +40,18 @@ and open the template in the editor.
                     </div> 
                 </div>
                 <div class="dropdown">
-                    <img class="dropHeader" title="Account" onclick="myDropdown.toggle(this)" src="icons/spears.png" alt="Account" >
+                    <img class="dropHeader" title="Account" onclick="myDropdown.toggle(this)" src="icons/joker.png" alt="Account" >
                     <div class="dropContent" id="accountDropDown">
-                    <a href="#/logon">Login</a> <hr/>
-                    <a href="#/profile">My Account</a> <hr/>
-                    <a href="#/logout">Log...OUT!</a> <hr/>
+                        <a href="#/logon">Login</a> <hr/>
+                        <a href="#/profile">My Account</a> <hr/>
+                        <a href="#/logout">Log...OUT!</a> <hr/>
                     </div>
                 </div>
                 <div class="dropdown">
                     <img class="dropHeader" title="Tutorial" onclick="myDropdown.toggle(this)" src="icons/spears.png" alt="Tutorial" >
                     <div class="dropContent" id="tutorialDropDown">
-                    <a href="misc/proposalJVH.pdf">Proposal PDF</a> <hr/>
-                    <a href="poc.html">Proof of Concept</a> <hr/>
+                        <a href="tutorial/proposal.pdf">Proposal PDF</a> <hr/>
+                        <a href="tutorial/poc.html">Proof of Concept</a> <hr/>
                     </div>
                 </div>
             </div>
@@ -74,9 +74,8 @@ and open the template in the editor.
 
             Contact:<a href="mailto:JohnVHumes@temple.edu"> JohnVHumes@temple.edu </a>        
         </div>
-        <script src="js/dropdownFw.js"></script>
-        <script src="js/routeFw.js"></script>
 
+        <script src="js/CRUD_icons.js"></script>     
         <script src="js/ajax.js"></script>
         <script src="js/makeTable.js"></script>
         <script src="js/components/home.js"></script> 
@@ -85,6 +84,8 @@ and open the template in the editor.
         <script src="js/components/characters.js"></script> 
         <script src="js/components/factions.js"></script> 
         <script src="js/components/logon.js"></script> 
+        <script src="js/dropdownFw.js"></script>
+        <script src="js/routeFw.js"></script>
 
         <script>
 
@@ -95,12 +96,12 @@ and open the template in the editor.
                         routes['/home'] = home;
                         routes['/blog'] = blog;
                         routes['/users'] = users.list;
-                        routes['/factions'] = factions;
+                        routes['/factions'] = factions.list;
                         routes['/characters'] = characters.list;
                         routes['/logon'] = logon.UI;
                         routes['/profile'] = logon.getProfile;
                         routes['/logout'] = logon.logoff;
-                        
+
 
 
 

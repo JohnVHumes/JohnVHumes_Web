@@ -137,15 +137,16 @@ var content = `
     </ul>
     
     </p>
+    
+    <br>
     HW5 Tutorial Proposal
     
     <ul>
-                    <li><a href="misc/proposalJVH.pdf">Proposal PDF</a> <hr/></li>
-                    <li><a href="poc.html">Proof of Concept</a> <hr/> <hr/></li>
-    
-    <p>
-    
-    <ul>
+                    <li><a href="tutorial/proposal.pdf">Proposal PDF</a> <hr/></li>
+                    <li><a href="tutorial/poc.html">Proof of Concept</a> <hr/></li>
+    </ul>
+   
+   <ul>
     <b> Difficulties</b>
     
         <li>
@@ -166,7 +167,60 @@ var content = `
         </li>
 
     </ul>
+    </p>
     
+    HW6 Logon
+    
+    <p>
+    
+    <ul>
+    <b> Difficulties</b>
+    
+        <li>
+            I spent a solid 2 hours trying to fix a bug that was already fixed because I forgot to clear my cache
+        </li>
+        <li>
+            Accidentally uploaded the .java files rather than the .class files, which baffled me for a while
+        </li>
+        <li>
+            Deciding what an API returns and how it should return it is a little mindboggling
+        </li>
+
+    <br>
+    <b> Not-So-Difficulties</b>
+    
+        <li>
+            Writing the APIs themselves
+        </li>
+
+    </ul>
+    </p>
+        
+    HW7 Delete
+    
+    <p>
+    
+    <ul>
+    <b> Difficulties</b>
+    
+        <li>
+            Many of my problems at this stage in the game are stemming from my early inconsistent use of naming conventions, I see how important a clean start is now
+        </li>
+        <li>
+            Missing code in my table builder befuddled me for an hour
+        </li>
+        <li>
+            It is a little tough to get my head around everything that is going on in the table builder
+        </li>
+
+    <br>
+    <b> Not-So-Difficulties</b>
+    
+        <li>
+            This was a pretty easy homework overall, I had time to bring the functionalities of my faction table up to par with users and characters
+        </li>
+
+    </ul>
        `;
         document.getElementById(id).innerHTML = content;
-        }
+}

@@ -1,4 +1,4 @@
-function makeTable (sortIcon) {
+function makeTable(sortIcon) {
 
     var tableBuilder = {};  // globally available object, provides sort, convert, compare,and buildTable functionality
 
@@ -24,14 +24,16 @@ function makeTable (sortIcon) {
         // from a JSON string. 
         // Capitalize the first letter, then insert space before every subsequent capitalized letter. 
         // Example:  "userEmail" --> "User Email"
-        function prettyColumnHeading(propName) {
+        function prettyColumnHeading(propName, toSort) {
 
             if (propName.length === 0) {
                 return "";
             }
-
-            var newHdg = "<img src='" + sortIcon + "'>";
-            newHdg += " ";
+            var newHdg = "";
+            if (toSort) {
+                var newHdg = "<img src='" + sortIcon + "'>";
+                newHdg += " ";
+            }
             // capitalize first letter
             newHdg += propName.charAt(0).toUpperCase();
             // iterate through all characters, inserting space before any capital letters.
@@ -51,12 +53,16 @@ function makeTable (sortIcon) {
 
             var cellContent = tableData.innerHTML;
             if (cellContent.includes(".jpg") || cellContent.includes(".png")) {
-                tableData.innerHTML = "<img width='" + imgWidth + "' src='" + cellContent + "'>";
-                tableData.style.textAlign = "center";
+
+                // **** enhanced from HW4 -- dont turn icon cell contents into img tag...
+                if (!cellContent.includes('icon')) {
+                    tableData.innerHTML = "<img width='" + imgWidth + "' src='" + cellContent + "'>";
+                    tableData.style.textAlign = "center";
+                }
             }
             if (!isNaN(cellContent) || // if numeric 
                     ((cellContent.length > 0) && (cellContent.charAt(0) === "$"))) { // or dollar amt
-                tableData.style.textAlign = "center";
+                tableData.style.textAlign = "right";
                 //console.log("right alligning " + cellContent);
             }
         } // align 
@@ -81,7 +87,15 @@ function makeTable (sortIcon) {
             for (var prop in data) {
                 var tableHeadDetail = document.createElement("th");
                 tableHeadRow.appendChild(tableHeadDetail);
-                tableHeadDetail.innerHTML = prettyColumnHeading(prop);
+                
+                // *** NEW from HW4
+                var isSortable = true;
+                if (data[prop].includes('icon')) {
+                    isSortable = false;
+                }
+                // *** END OF NEW from HW4
+                
+                tableHeadDetail.innerHTML = prettyColumnHeading(prop, isSortable); // New from HW4, added isSortable parameter
                 tableHeadDetail.sortOrder = prop; // add custom property to DOM element
                 tableHeadDetail.sortReverse = false; // add custom property to DOM element
 
@@ -224,6 +238,14 @@ function makeTable (sortIcon) {
         var parsedDate = Date.parse(s);
         if (isNaN(s) && !isNaN(parsedDate)) {
             //console.log(s + " is a Date ");
+
+            // parsedDate is the number of milliseconds from Jan 1st, 1970
+            parsedDate = parsedDate / (1000); // convert to seconds, not milliseconds
+            parsedDate = parsedDate / 60; // minutes now
+            parsedDate = parsedDate / 60; // hours now
+            parsedDate = parsedDate / 24; // days now, since jan 1st 1970
+            parsedDate = parsedDate + (70 * 365 + 10); // now number of days since Jan 1st, 1900 (approx)
+            console.log('parsedDate is ' + parsedDate);
             return parsedDate;
         } else {
             var tmp = s;
@@ -295,6 +317,6 @@ function makeTable (sortIcon) {
             return tableBuilder.compare(q[byProperty], r[byProperty], reverse);
         });
     }; // sort
-    
+
     return tableBuilder;
 }

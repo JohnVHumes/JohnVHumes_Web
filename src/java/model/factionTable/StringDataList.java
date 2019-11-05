@@ -11,7 +11,7 @@ import java.sql.ResultSet;
  public class StringDataList {
 
     public String dbError = "";
-    public ArrayList<StringData> FactionList = new ArrayList();
+    public ArrayList<StringData> factionList = new ArrayList();
 
     // Default constructor leaves StringDataList objects nicely set with properties 
     // indicating no database error and 0 elements in the list.
@@ -20,13 +20,13 @@ import java.sql.ResultSet;
 
     // Adds one StringData element to the array list of StringData elements
     public void add(StringData factionData) {
-        this.FactionList.add(factionData);
+        this.factionList.add(factionData);
     }
 
     // Adds creates a StringData element from a ResultSet (from SQL select statement), 
     // then adds that new element to the array list of StringData elements.
     public void add(ResultSet results) {
         StringData sd = new StringData(results);
-        this.FactionList.add(sd);
+        this.factionList.add(sd);
     }
 }

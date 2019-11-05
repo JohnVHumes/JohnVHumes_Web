@@ -5,6 +5,8 @@
 <%@page language="java" import="view.FactionView" %> 
 <%@page language="java" import="com.google.gson.*" %>
 
+
+
 <%
     // default constructor creates nice empty StringDataList with all fields "" (empty string, nothing null).
     StringDataList list = new StringDataList();
